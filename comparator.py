@@ -1,10 +1,10 @@
-import streamlit as st
-import numpy as np
-import random
-from typing import Union, Path, Tuple, List
-
 from collections import namedtuple
+from pathlib import Path
+import random
+from typing import List, Tuple, Union
 
+import numpy as np
+import streamlit as st
 
 Selection = namedtuple('Selection', ['real_vid', 'fake_vid', 'is_real'])
 
@@ -13,8 +13,9 @@ RESULTS_DIR = '/scratch/groups/willhies/cardiac_compare/outputs'
 
 
 def get_video_paths(basedir: Union[Path, str], ext='.mp4') -> Tuple[list, list]:
-    assert (real_dir := basedir / 'real').exists() and real_dir.is_dir()
-    assert (fake_dir := basedir / 'fake').exists() and fake_dir.is_dir()
+    basedir = Path(basedir)
+    assert (real_dir := basedir / 'real').exists() and real_dir.is_dir(), str(real_dir)
+    assert (fake_dir := basedir / 'synthetic').exists() and fake_dir.is_dir(), str(fake_dir)
 
     real_vids = list(real_dir.glob(f'*{ext}'))
     fake_vids = list(fake_dir.glob(f'*{ext}'))
@@ -24,7 +25,7 @@ def get_video_paths(basedir: Union[Path, str], ext='.mp4') -> Tuple[list, list]:
 
 def main():
 
-    st.tile('Cardiac Comparator')
+    st.title('Cardiac Comparator')
     st.markdown(
         'Evaluate our cardiac echo generative AI by selecting which echo from each pair'
         ' is the real one!'
