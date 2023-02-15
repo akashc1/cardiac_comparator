@@ -1,7 +1,7 @@
 # Cardiac Comparator
 App to provide a UI to compare synthetic/real cardiac echos to evaluate a generative AI!
 
-Author: @akashc1
+Author: [@akashc1](https://github.com/akashc1)
 
 
 ### Setup
