@@ -16,6 +16,8 @@ cd cardiac_comparator
 conda create --prefix <PATH_PREFIX> -n 'compare' --file requirements.txt python=3.10
 ```
 
+**NOTE: If using Sherlock, the proper environment is already built at `/home/groups/willhies/anaconda3/envs/compare`**
+
 ### Run on Sherlock
 (On Sherlock) Start streamlit server:
 ```
